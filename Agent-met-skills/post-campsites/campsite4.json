@@ -1,0 +1,13 @@
+{
+  "name": "Mountain View",
+  "location": "Rocky Mountain National Park, CO",
+  "description": "High-altitude campsite with breathtaking mountain views and great hiking trails.",
+  "pricePerNight": 55.0,
+  "capacity": 5,
+  "amenities": "Hiking trails, Fire pit, Mountain views, Wildlife observation",
+  "imageUrl": "https://images.unsplash.com/photo-1571863533956-01c88e79957e",
+  "available": true,
+  "campsiteType": "Tent",
+  "terrainType": "Mountain",
+  "accessibilityLevel": "Moderate"
+}

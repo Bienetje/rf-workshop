@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.4 on win32)" generated="2026-04-16T13:04:56.329016" rpa="false" schemaversion="5">
+<suite id="s1" name="Agent-met-skills" source="C:\Users\SabineFrissenPraegus\Desktop\Cursussen en trainingen\Testnet2026\Agent-met-skills">
+<suite id="s1-s1" name="Tests" source="C:\Users\SabineFrissenPraegus\Desktop\Cursussen en trainingen\Testnet2026\Agent-met-skills\tests">
+<suite id="s1-s1-s1" name="Api-Campsites" source="C:\Users\SabineFrissenPraegus\Desktop\Cursussen en trainingen\Testnet2026\Agent-met-skills\tests\api-campsites.robot">
+<kw name="Create API Session" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<arg>__import__('urllib3').disable_warnings(__import__('urllib3').exceptions.InsecureRequestWarning)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.501548" elapsed="0.000454"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-04-16T13:04:56.502428" level="INFO">Creating Session using : alias=api, url=https://travels.praegus.nl, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=False</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-04-16T13:04:56.502174" elapsed="0.000527"/>
+</kw>
+<status status="PASS" start="2026-04-16T13:04:56.500854" elapsed="0.001954"/>
+</kw>
+<test id="s1-s1-s1-t1" name="API-03 POST creates a new campsite successfully" line="40">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2026-04-16T13:04:56.508377" level="INFO">${timestamp} = 20260416130456</msg>
+<var>${timestamp}</var>
+<arg>result_format=%Y%m%d%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.507924" elapsed="0.000597"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-04-16T13:04:56.509494" level="INFO">${name} = API Test Campsite 20260416130456</msg>
+<var>${name}</var>
+<arg>API Test Campsite ${timestamp}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.508959" elapsed="0.000715"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-16T13:04:56.510732" level="INFO">${payload} = {'name': 'API Test Campsite 20260416130456', 'location': 'Test Valley, TX', 'description': 'Test campsite created by API smoke test.', 'pricePerNight': '42.0', 'capacity': '3', 'amenities': 'BBQ, Wate...</msg>
+<var>${payload}</var>
+<arg>name=${name}</arg>
+<arg>location=Test Valley, TX</arg>
+<arg>description=Test campsite created by API smoke test.</arg>
+<arg>pricePerNight=42.0</arg>
+<arg>capacity=3</arg>
+<arg>amenities=BBQ, Water, Fire pit</arg>
+<arg>imageUrl=https://example.com/test-campsite.jpg</arg>
+<arg>available=True</arg>
+<arg>campsiteType=tent</arg>
+<arg>terrainType=forest</arg>
+<arg>accessibilityLevel=moderate</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.510108" elapsed="0.000753"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-04-16T13:04:56.639268" level="INFO">POST Request : url=https://travels.praegus.nl/api/campsites 
+ path_url=/api/campsites 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '370', 'Content-Type': 'application/json'} 
+ body=b'{"name": "API Test Campsite 20260416130456", "location": "Test Valley, TX", "description": "Test campsite created by API smoke test.", "pricePerNight": "42.0", "capacity": "3", "amenities": "BBQ, Water, Fire pit", "imageUrl": "https://example.com/test-campsite.jpg", "available": "True", "campsiteType": "tent", "terrainType": "forest", "accessibilityLevel": "moderate"}' 
+ </msg>
+<msg time="2026-04-16T13:04:56.639527" level="INFO">POST Response : url=https://travels.praegus.nl/api/campsites 
+ status=201, reason=Created 
+ headers={'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'X-Frame-Options': 'SAMEORIGIN', 'Content-Type': 'application/json', 'Date': 'Thu, 16 Apr 2026 11:04:56 GMT', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'Transfer-Encoding': 'chunked'} 
+ body={"id":10,"name":"API Test Campsite 20260416130456","location":"Test Valley, TX","description":"Test campsite created by API smoke test.","pricePerNight":42.0,"capacity":3,"amenities":"BBQ, Water, Fire pit","imageUrl":"https://example.com/test-campsite.jpg","available":true,"campsiteType":"tent","terrainType":"forest","accessibilityLevel":"moderate"} 
+ </msg>
+<msg time="2026-04-16T13:04:56.639705" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.511242" elapsed="0.128532"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.640243" elapsed="0.000389"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-04-16T13:04:56.641795" level="INFO">${created} = {'id': 10, 'name': 'API Test Campsite 20260416130456', 'location': 'Test Valley, TX', 'description': 'Test campsite created by API smoke test.', 'pricePerNight': 42.0, 'capacity': 3, 'amenities': 'BBQ...</msg>
+<var>${created}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.641160" elapsed="0.000785"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${created['name']}</arg>
+<arg>${name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.642517" elapsed="0.000594"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${created['id']} &gt; 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.643500" elapsed="0.000486"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-04-16T13:04:56.644938" level="INFO">${CREATED_ID} = 10</msg>
+<arg>${CREATED_ID}</arg>
+<arg>${created['id']}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.644378" elapsed="0.000737"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-04-16T13:04:56.699196" level="INFO">GET Request : url=https://travels.praegus.nl/api/campsites/10 
+ path_url=/api/campsites/10 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-16T13:04:56.699412" level="INFO">GET Response : url=https://travels.praegus.nl/api/campsites/10 
+ status=200, reason=OK 
+ headers={'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'X-Frame-Options': 'SAMEORIGIN', 'Content-Type': 'application/json', 'Date': 'Thu, 16 Apr 2026 11:04:56 GMT', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000', 'Transfer-Encoding': 'chunked'} 
+ body={"id":10,"name":"API Test Campsite 20260416130456","location":"Test Valley, TX","description":"Test campsite created by API smoke test.","pricePerNight":42.0,"capacity":3,"amenities":"BBQ, Water, Fire pit","imageUrl":"https://example.com/test-campsite.jpg","available":true,"campsiteType":"tent","terrainType":"forest","accessibilityLevel":"moderate"} 
+ </msg>
+<msg time="2026-04-16T13:04:56.699616" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<var>${get_response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/${CREATED_ID}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.645577" elapsed="0.054114"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${get_response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.700276" elapsed="0.000343"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-04-16T13:04:56.701938" level="INFO">${loaded} = {'id': 10, 'name': 'API Test Campsite 20260416130456', 'location': 'Test Valley, TX', 'description': 'Test campsite created by API smoke test.', 'pricePerNight': 42.0, 'capacity': 3, 'amenities': 'BBQ...</msg>
+<var>${loaded}</var>
+<arg>${get_response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.701118" elapsed="0.001005"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${loaded['name']}</arg>
+<arg>${name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.702640" elapsed="0.000902"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2026-04-16T13:04:56.704780" level="INFO">Argument types are:
+&lt;class 'bool'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${loaded['available']}</arg>
+<arg>True</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.704050" elapsed="0.001110"/>
+</kw>
+<kw name="Cleanup Created Campsite" type="TEARDOWN">
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-04-16T13:04:56.767729" level="INFO">DELETE Request : url=https://travels.praegus.nl/api/campsites/10 
+ path_url=/api/campsites/10 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-04-16T13:04:56.768197" level="INFO">DELETE Response : url=https://travels.praegus.nl/api/campsites/10 
+ status=204, reason=No Content 
+ headers={'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'X-Frame-Options': 'SAMEORIGIN', 'Date': 'Thu, 16 Apr 2026 11:04:56 GMT', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'} 
+ body=None 
+ </msg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/${CREATED_ID}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.707251" elapsed="0.061280"/>
+</kw>
+<arg>DELETE On Session</arg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/${CREATED_ID}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.706930" elapsed="0.061904"/>
+</kw>
+<arg>'${CREATED_ID}' != ''</arg>
+<arg>Run Keyword And Ignore Error</arg>
+<arg>DELETE On Session</arg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/${CREATED_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.706348" elapsed="0.062722"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-04-16T13:04:56.771565" level="INFO">${CREATED_ID} = </msg>
+<arg>${CREATED_ID}</arg>
+<arg>${EMPTY}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.769435" elapsed="0.003232"/>
+</kw>
+<status status="PASS" start="2026-04-16T13:04:56.705847" elapsed="0.067164"/>
+</kw>
+<tag>api</tag>
+<tag>post</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-04-16T13:04:56.502878" elapsed="0.270729"/>
+</test>
+<kw name="Cleanup Created Campsite" type="TEARDOWN">
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${CREATED_ID}' != ''</arg>
+<arg>Run Keyword And Ignore Error</arg>
+<arg>DELETE On Session</arg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/${CREATED_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.781002" elapsed="0.000434"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-04-16T13:04:56.781990" level="INFO">${CREATED_ID} = </msg>
+<arg>${CREATED_ID}</arg>
+<arg>${EMPTY}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.781632" elapsed="0.000519"/>
+</kw>
+<status status="PASS" start="2026-04-16T13:04:56.780563" elapsed="0.001698"/>
+</kw>
+<doc>API-testcases voor de campsite API van Praegus Travels.</doc>
+<status status="PASS" start="2026-04-16T13:04:56.413919" elapsed="0.368389"/>
+</suite>
+<status status="PASS" start="2026-04-16T13:04:56.410037" elapsed="0.377516"/>
+</suite>
+<status status="PASS" start="2026-04-16T13:04:56.362025" elapsed="0.434610"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">api</stat>
+<stat pass="1" fail="0" skip="0">post</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="Agent-met-skills" id="s1" pass="1" fail="0" skip="0">Agent-met-skills</stat>
+<stat name="Tests" id="s1-s1" pass="1" fail="0" skip="0">Agent-met-skills.Tests</stat>
+<stat name="Api-Campsites" id="s1-s1-s1" pass="1" fail="0" skip="0">Agent-met-skills.Tests.Api-Campsites</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

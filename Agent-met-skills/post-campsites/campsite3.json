@@ -1,0 +1,13 @@
+{
+  "name": "Desert Oasis",
+  "location": "Joshua Tree National Park, CA",
+  "description": "Secluded desert campsite with amazing stargazing opportunities.",
+  "pricePerNight": 35.0,
+  "capacity": 8,
+  "amenities": "Sand dunes nearby, Campfire area, Sunrise viewpoint",
+  "imageUrl": "https://images.unsplash.com/photo-1510312305653-8ed496efae75",
+  "available": true,
+  "campsiteType": "RV",
+  "terrainType": "Desert",
+  "accessibilityLevel": "Easy"
+}

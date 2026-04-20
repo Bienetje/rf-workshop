@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.4 on win32)" generated="2026-04-16T12:43:21.957894" rpa="false" schemaversion="5">
+<suite id="s1" name="Api-Campsites" source="C:\Users\SabineFrissenPraegus\Desktop\Cursussen en trainingen\Testnet2026\Agent-met-skills\tests\api-campsites.robot">
+<kw name="Create API Session" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-04-16T12:43:22.192948" level="INFO">Creating Session using : alias=api, url=https://travels.praegus.nl, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-04-16T12:43:22.192799" elapsed="0.000302"/>
+</kw>
+<status status="PASS" start="2026-04-16T12:43:22.192415" elapsed="0.000757"/>
+</kw>
+<test id="s1-t1" name="API-01 GET all campsites returns expected website campsite names" line="22">
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-04-16T12:43:22.193793" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-04-16T12:43:22.796408" level="INFO">GET Request : url=https://travels.praegus.nl/api/campsites 
+ path_url=/api/campsites 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-16T12:43:22.796614" level="INFO">GET Response : url=https://travels.praegus.nl/api/campsites 
+ status=200, reason=OK 
+ headers={'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'X-Frame-Options': 'SAMEORIGIN', 'Content-Type': 'application/json', 'Date': 'Thu, 16 Apr 2026 10:43:22 GMT', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000', 'Transfer-Encoding': 'chunked'} 
+ body=[{"id":1,"name":"Pine Valley Campground","location":"Yosemite National Park, CA","description":"Beautiful campsite nestled among pine trees with stunning views of the valley. Perfect for families and groups.","pricePerNight":45.0,"capacity":6,"amenities":"Fire pit, Picnic table, Water access, Restrooms nearby","imageUrl":"https://images.unsplash.com/photo-1504280390367-361c6d9f38f4","available":true,"campsiteType":"tent","terrainType":"forest","accessibilityLevel":"easy"},{"id":2,"name":"Lakeside Retreat","location":"Lake Tahoe, CA","description":"Peaceful campsite right on the shores of Lake Tahoe. Enjoy swimming, fishing, and beautiful sunsets.","pricePerNight":65.0,"capacity":4,"amenities":"Dock access, Fire ring, Picnic table, Shower facilities","imageUrl":"https://images.unsplash.com/photo-1537905569824-f89f14cceb68","available":true,"campsiteType":"cabin","terrainType":"lake","accessibilityLevel":"easy"},{"id":3,"name":"Desert Oasis","location":"Joshua Tree National Park, CA","description":"Experience the magic of the desert at this secluded campsite. Amazing stargazing opportunities.","pricePerNight":35.0,"capacity":8,"amenities":"Shade structure, Fire pit, Vault toilets","imageUrl":"https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7","available":true,"campsiteType":"tent","terrainType":"desert","accessibilityLevel":"moderate"},{"id":4,"name":"Mountain View","location":"Rocky Mountain National Park, CO","description":"High-altitude campsite with breathtaking views of the Rocky Mountains. Great hiking trails nearby.","pricePerNight":55.0,"capacity":5,"amenities":"Bear boxes, Fire ring, Picnic table, Potable water","imageUrl":"https://images.unsplash.com/photo-1571863533956-01c88e79957e","available":false,"campsiteType":"backcountry","terrainType":"mountain","accessibilityLevel":"difficult"},{"id":5,"name":"Coastal Hideaway","location":"Big Sur, CA","description":"Stunning coastal campsite with ocean views and beach access. Fall asleep to the sound of waves.","pricePerNight":75.0,"capacity":4,"amenities":"Beach access, Fire pit, Picnic table, Hot showers","imageUrl":"https://images.unsplash.com/photo-1510312305653-8ed496efae75","available":true,"campsiteType":"glamping","terrainType":"beach","accessibilityLevel":"accessible"}] 
+ </msg>
+<msg time="2026-04-16T12:43:22.796743" level="INFO">C:\Users\SabineFrissenPraegus\AppData\Roaming\Python\Python314\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'travels.praegus.nl'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-04-16T12:43:22.797256" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.193757" elapsed="0.603564"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.797852" elapsed="0.000404"/>
+</kw>
+<kw name="Get Response Body">
+<msg time="2026-04-16T12:43:22.800001" level="FAIL">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</msg>
+<var>${body}</var>
+<arg>${response}</arg>
+<status status="FAIL" start="2026-04-16T12:43:22.799951" elapsed="0.000106">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${all_campsites}</var>
+<arg>__import__('json').loads(r'''${body}''')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:22.800494" elapsed="0.000031"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${found}</var>
+<arg>any(item.get('name') == '''${expected}''' for item in ${all_campsites})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:22.801004" elapsed="0.000023"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${found}</arg>
+<arg>Campsite '${expected}' not gevonden in API-response</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:22.801128" elapsed="0.000019"/>
+</kw>
+<var name="${expected}"/>
+<status status="NOT RUN" start="2026-04-16T12:43:22.800909" elapsed="0.000274"/>
+</iter>
+<var>${expected}</var>
+<value>@{EXPECTED_CAMPING_NAMES}</value>
+<status status="NOT RUN" start="2026-04-16T12:43:22.800796" elapsed="0.000421"/>
+</for>
+<kw name="Cleanup Created Campsite" type="TEARDOWN">
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${CREATED_ID}' != ''</arg>
+<arg>Run Keyword And Ignore Error</arg>
+<arg>Delete Request</arg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/${CREATED_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.802114" elapsed="0.000431"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-04-16T12:43:22.803070" level="INFO">${CREATED_ID} = </msg>
+<arg>${CREATED_ID}</arg>
+<arg>${EMPTY}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.802635" elapsed="0.000466"/>
+</kw>
+<status status="PASS" start="2026-04-16T12:43:22.801810" elapsed="0.001338"/>
+</kw>
+<tag>api</tag>
+<tag>get</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2026-04-16T12:43:22.193221" elapsed="0.610192">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</test>
+<test id="s1-t2" name="API-02 GET campsite by ID returns Pine Valley Campground" line="33">
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-04-16T12:43:22.804732" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-04-16T12:43:22.980064" level="INFO">GET Request : url=https://travels.praegus.nl/api/campsites/1 
+ path_url=/api/campsites/1 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-04-16T12:43:22.980245" level="INFO">GET Response : url=https://travels.praegus.nl/api/campsites/1 
+ status=200, reason=OK 
+ headers={'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'X-Frame-Options': 'SAMEORIGIN', 'Content-Type': 'application/json', 'Date': 'Thu, 16 Apr 2026 10:43:22 GMT', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000', 'Transfer-Encoding': 'chunked'} 
+ body={"id":1,"name":"Pine Valley Campground","location":"Yosemite National Park, CA","description":"Beautiful campsite nestled among pine trees with stunning views of the valley. Perfect for families and groups.","pricePerNight":45.0,"capacity":6,"amenities":"Fire pit, Picnic table, Water access, Restrooms nearby","imageUrl":"https://images.unsplash.com/photo-1504280390367-361c6d9f38f4","available":true,"campsiteType":"tent","terrainType":"forest","accessibilityLevel":"easy"} 
+ </msg>
+<msg time="2026-04-16T12:43:22.980375" level="INFO">C:\Users\SabineFrissenPraegus\AppData\Roaming\Python\Python314\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'travels.praegus.nl'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-04-16T12:43:22.981023" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/1</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.804699" elapsed="0.176428"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.981876" elapsed="0.000313"/>
+</kw>
+<kw name="Get Response Body">
+<msg time="2026-04-16T12:43:22.983590" level="FAIL">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</msg>
+<var>${body}</var>
+<arg>${response}</arg>
+<status status="FAIL" start="2026-04-16T12:43:22.983552" elapsed="0.000077">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${campsite}</var>
+<arg>__import__('json').loads(r'''${body}''')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:22.983952" elapsed="0.000026"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${campsite['name']}</arg>
+<arg>Pine Valley Campground</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:22.984313" elapsed="0.000022"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${campsite['location']}</arg>
+<arg>Yosemite National Park, CA</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:22.984582" elapsed="0.000021"/>
+</kw>
+<kw name="Cleanup Created Campsite" type="TEARDOWN">
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${CREATED_ID}' != ''</arg>
+<arg>Run Keyword And Ignore Error</arg>
+<arg>Delete Request</arg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/${CREATED_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.985302" elapsed="0.000282"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-04-16T12:43:22.986080" level="INFO">${CREATED_ID} = </msg>
+<arg>${CREATED_ID}</arg>
+<arg>${EMPTY}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.985669" elapsed="0.000440"/>
+</kw>
+<status status="PASS" start="2026-04-16T12:43:22.985093" elapsed="0.001056"/>
+</kw>
+<tag>api</tag>
+<tag>get</tag>
+<status status="FAIL" start="2026-04-16T12:43:22.804157" elapsed="0.182253">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</test>
+<test id="s1-t3" name="API-03 POST creates a new campsite successfully" line="42">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2026-04-16T12:43:22.988094" level="INFO">${timestamp} = 20260416124322</msg>
+<var>${timestamp}</var>
+<arg>result_format=%Y%m%d%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.987707" elapsed="0.000420"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-04-16T12:43:22.988798" level="INFO">${name} = API Test Campsite 20260416124322</msg>
+<var>${name}</var>
+<arg>API Test Campsite ${timestamp}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.988438" elapsed="0.000384"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-04-16T12:43:22.989685" level="INFO">${payload} = {'name': 'API Test Campsite 20260416124322', 'location': 'Test Valley, TX', 'description': 'Test campsite created by API smoke test.', 'pricePerNight': '42.0', 'capacity': '3', 'amenities': 'BBQ, Wate...</msg>
+<var>${payload}</var>
+<arg>name=${name}</arg>
+<arg>location=Test Valley, TX</arg>
+<arg>description=Test campsite created by API smoke test.</arg>
+<arg>pricePerNight=42.0</arg>
+<arg>capacity=3</arg>
+<arg>amenities=BBQ, Water, Fire pit</arg>
+<arg>imageUrl=https://example.com/test-campsite.jpg</arg>
+<arg>available=True</arg>
+<arg>campsiteType=tent</arg>
+<arg>terrainType=forest</arg>
+<arg>accessibilityLevel=moderate</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.989108" elapsed="0.000606"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2026-04-16T12:43:22.990127" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2026-04-16T12:43:23.566155" level="INFO">POST Request : url=https://travels.praegus.nl/api/campsites 
+ path_url=/api/campsites 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '370', 'Content-Type': 'application/json'} 
+ body=b'{"name": "API Test Campsite 20260416124322", "location": "Test Valley, TX", "description": "Test campsite created by API smoke test.", "pricePerNight": "42.0", "capacity": "3", "amenities": "BBQ, Water, Fire pit", "imageUrl": "https://example.com/test-campsite.jpg", "available": "True", "campsiteType": "tent", "terrainType": "forest", "accessibilityLevel": "moderate"}' 
+ </msg>
+<msg time="2026-04-16T12:43:23.566336" level="INFO">POST Response : url=https://travels.praegus.nl/api/campsites 
+ status=201, reason=Created 
+ headers={'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'X-Frame-Options': 'SAMEORIGIN', 'Content-Type': 'application/json', 'Date': 'Thu, 16 Apr 2026 10:43:22 GMT', 'Via': '1.1 google', 'Alt-Svc': 'h3=":443"; ma=2592000', 'Transfer-Encoding': 'chunked'} 
+ body={"id":6,"name":"API Test Campsite 20260416124322","location":"Test Valley, TX","description":"Test campsite created by API smoke test.","pricePerNight":42.0,"capacity":3,"amenities":"BBQ, Water, Fire pit","imageUrl":"https://example.com/test-campsite.jpg","available":true,"campsiteType":"tent","terrainType":"forest","accessibilityLevel":"moderate"} 
+ </msg>
+<msg time="2026-04-16T12:43:23.566484" level="INFO">C:\Users\SabineFrissenPraegus\AppData\Roaming\Python\Python314\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'travels.praegus.nl'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-04-16T12:43:23.567090" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites</arg>
+<arg>json=${payload}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2026-04-16T12:43:22.990090" elapsed="0.577084"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-04-16T12:43:23.567827" elapsed="0.000436"/>
+</kw>
+<kw name="Get Response Body">
+<msg time="2026-04-16T12:43:23.571423" level="FAIL">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</msg>
+<var>${body}</var>
+<arg>${response}</arg>
+<status status="FAIL" start="2026-04-16T12:43:23.571344" elapsed="0.000173">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${created}</var>
+<arg>__import__('json').loads(r'''${body}''')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:23.572208" elapsed="0.000060"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${created['name']}</arg>
+<arg>${name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:23.572939" elapsed="0.000060"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${created['id']} &gt; 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:23.573231" elapsed="0.000021"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<arg>${CREATED_ID}</arg>
+<arg>${created['id']}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:23.573642" elapsed="0.000029"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2026-04-16T12:43:23.573971" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<var>${get_response}</var>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/${CREATED_ID}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:23.573938" elapsed="0.000419"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${get_response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:23.574583" elapsed="0.000024"/>
+</kw>
+<kw name="Get Response Body">
+<var>${get_body}</var>
+<arg>${get_response}</arg>
+<status status="NOT RUN" start="2026-04-16T12:43:23.574888" elapsed="0.000026"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${loaded}</var>
+<arg>__import__('json').loads(r'''${get_body}''')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:23.575136" elapsed="0.000024"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${loaded['name']}</arg>
+<arg>${name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:23.575435" elapsed="0.000026"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${loaded['available']}</arg>
+<arg>True</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2026-04-16T12:43:23.575732" elapsed="0.000026"/>
+</kw>
+<kw name="Cleanup Created Campsite" type="TEARDOWN">
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${CREATED_ID}' != ''</arg>
+<arg>Run Keyword And Ignore Error</arg>
+<arg>Delete Request</arg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/${CREATED_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-04-16T12:43:23.576513" elapsed="0.000317"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-04-16T12:43:23.577411" level="INFO">${CREATED_ID} = </msg>
+<arg>${CREATED_ID}</arg>
+<arg>${EMPTY}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-04-16T12:43:23.576940" elapsed="0.000507"/>
+</kw>
+<status status="PASS" start="2026-04-16T12:43:23.576214" elapsed="0.001280"/>
+</kw>
+<tag>api</tag>
+<tag>post</tag>
+<tag>smoke</tag>
+<status status="FAIL" start="2026-04-16T12:43:22.987224" elapsed="0.590453">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</test>
+<kw name="Cleanup Created Campsite" type="TEARDOWN">
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${CREATED_ID}' != ''</arg>
+<arg>Run Keyword And Ignore Error</arg>
+<arg>Delete Request</arg>
+<arg>${SESSION_ALIAS}</arg>
+<arg>/api/campsites/${CREATED_ID}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-04-16T12:43:23.578638" elapsed="0.000281"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-04-16T12:43:23.579482" level="INFO">${CREATED_ID} = </msg>
+<arg>${CREATED_ID}</arg>
+<arg>${EMPTY}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-04-16T12:43:23.579018" elapsed="0.000521"/>
+</kw>
+<status status="PASS" start="2026-04-16T12:43:23.578484" elapsed="0.001133"/>
+</kw>
+<doc>API-testcases voor de campsite API van Praegus Travels.</doc>
+<status status="FAIL" start="2026-04-16T12:43:21.959397" elapsed="1.620253"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="3" skip="0">api</stat>
+<stat pass="0" fail="2" skip="0">get</stat>
+<stat pass="0" fail="1" skip="0">post</stat>
+<stat pass="0" fail="2" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="Api-Campsites" id="s1" pass="0" fail="3" skip="0">Api-Campsites</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-04-16T12:43:22.193793" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-04-16T12:43:22.804732" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2026-04-16T12:43:22.990127" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2026-04-16T12:43:23.573971" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

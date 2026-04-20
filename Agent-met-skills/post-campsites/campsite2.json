@@ -1,0 +1,13 @@
+{
+  "name": "Lakeside Retreat",
+  "location": "Lake Tahoe, CA",
+  "description": "Peaceful campsite right on the shore with swimming and fishing access.",
+  "pricePerNight": 65.0,
+  "capacity": 4,
+  "amenities": "Boat dock, Fire pit, Picnic table, Outdoor grill",
+  "imageUrl": "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7",
+  "available": true,
+  "campsiteType": "Cabin",
+  "terrainType": "Lakeside",
+  "accessibilityLevel": "Moderate"
+}
